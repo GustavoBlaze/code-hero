@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap");
+
+:root {
+  --snow: #F5F5F5;
+  --dark-snow: #E5E5E5;
+  --dark-smoke: #555555;
+  --dark-blue: #167ABC;
+  --white: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: 0;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased !important;
+}
