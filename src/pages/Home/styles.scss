@@ -1,0 +1,34 @@
+.page {
+  * {
+    transition: all 0.35s ease;
+  }
+
+  &__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding-top: 40px;
+    max-width: 1188px;
+    padding: 40px 24px 0 24px;
+    margin: 0 auto;
+
+    &__title {
+      color: var(--dark-smoke, #555);
+      font-size: 3.2rem;
+      line-height: 3.6rem;
+      margin-bottom: 1.6rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    &__content {
+      padding: 24px;
+
+      &__title {
+        font-size: 2.4rem;
+        line-height: 2.7rem;
+        align-self: center;
+      }
+    }
+  }
+}
