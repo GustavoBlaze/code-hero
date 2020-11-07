@@ -1,0 +1,71 @@
+.search-form {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    color: var(--dark-smoke, #555);
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+    margin-bottom: 0.8rem;
+    font-weight: bold;
+  }
+
+  &__input-group {
+    padding: 0.4rem 1.6rem;
+    border: 1px solid var(--dark-snow, #555);
+    background: var(--white, #fff);
+    border-radius: 0.4rem;
+    display: flex;
+    align-items: center;
+    width: 29.5rem;
+
+    input,
+    button {
+      border: none;
+      background: transparent;
+    }
+
+    input {
+      font-family: "PT Sans", sans-serif;
+      flex: 1;
+      padding: 0;
+      font-size: 1.4rem;
+      line-height: 1.7rem;
+      color: var(--dark-smoke, #555);
+
+      &::placeholder {
+        font-style: italic;
+        color: var(--smoke, #8e8e8e);
+      }
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      padding: 0;
+      cursor: pointer;
+
+      img {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    align-items: center;
+
+    label {
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+    }
+
+    &__input-group {
+      width: 100%;
+      max-width: 327px;
+    }
+  }
+}
