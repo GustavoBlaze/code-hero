@@ -67,7 +67,7 @@ function CharacterModal({ character, closeCallback, ...rest }) {
           <h2 style={{ display: "flex", alignItems: "center" }}>
             Comics{" "}
             {comics.length > 0 && (
-              <img className="arrow-right" src={arrowRightSVG} />
+              <img className="arrow-right" alt="arrow-right-icon" src={arrowRightSVG} />
             )}
           </h2>
           {comics.length === 0 ? (
@@ -79,6 +79,7 @@ function CharacterModal({ character, closeCallback, ...rest }) {
                   <a
                     href={comic.urls.find(({ type }) => type === "detail")?.url}
                     target="_blank"
+                    rel="noreferrer"
                   >
                     <img
                       src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
