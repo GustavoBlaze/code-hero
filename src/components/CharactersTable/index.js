@@ -3,8 +3,6 @@ import React from "react";
 import "./styles.scss";
 
 function CharactersTable({ characters }) {
-  console.log({ characters });
-
   return (
     <table className="characters-table">
       <thead>
@@ -31,8 +29,8 @@ function CharactersTable({ characters }) {
                 <>
                   {series.items
                     .filter((_, index) => index < 3)
-                    .map((serie) => (
-                      <p>{serie.name}</p>
+                    .map((serie, serieIndex) => (
+                      <p key={String(serieIndex)}>{serie.name}</p>
                     ))}
                 </>
               )}
@@ -44,8 +42,8 @@ function CharactersTable({ characters }) {
                 <>
                   {events.items
                     .filter((_, index) => index < 3)
-                    .map((event) => (
-                      <p>{event.name}</p>
+                    .map((event, eventIndex) => (
+                      <p key={String(eventIndex)}>{event.name}</p>
                     ))}
                 </>
               )}

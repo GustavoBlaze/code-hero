@@ -1,38 +1,22 @@
 import React, { useState, useCallback } from "react";
-import md5 from "js-md5";
 
 import searchSVG from "../../assets/icons/search.svg";
 import "./styles.scss";
 
-const API_URL = "https://gateway.marvel.com/v1/public/characters";
-const PUBLIC_KEY = "597b63caf3f947556f47c4f1ad84abce";
-
-function SearchForm({ parseApiDataCallback }) {
+function SearchForm({ callApiCallback, ...rest }) {
   const [characterName, setCharacterName] = useState("");
 
   const onSubmit = useCallback(
     async (event) => {
       event.preventDefault();
 
-      const timestamp = Number(new Date());
-      const hash = md5.create();
-      hash.update(timestamp + PUBLIC_KEY);
-
-      try {
-        const data = await fetch(
-          `${API_URL}?ts=${timestamp}&nameStartsWith=${characterName}&orderBy=name&limit=10&apikey=${PUBLIC_KEY}`
-        ).then((r) => r.json());
-
-        parseApiDataCallback(data);
-      } catch (err) {
-        console.error(err);
-      }
+      await callApiCallback(characterName);
     },
-    [characterName, parseApiDataCallback]
+    [callApiCallback, characterName]
   );
 
   return (
-    <form className="search-form" onSubmit={onSubmit}>
+    <form className="search-form" onSubmit={onSubmit} {...rest}>
       <label htmlFor="search-name-input">Nome do personagem</label>
 
       <div className="search-form__input-group">

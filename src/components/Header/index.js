@@ -3,9 +3,9 @@ import React from "react";
 import logo from "../../assets/img/logo.png";
 import "./styles.scss";
 
-function Header() {
+function Header({ ...props }) {
   return (
-    <header className="header">
+    <header className="header" {...props}>
       <div className="header__container">
         <img src={logo} alt="objective logo" />
 

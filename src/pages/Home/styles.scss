@@ -1,4 +1,8 @@
-.page {
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
   * {
     transition: all 0.35s ease;
   }
@@ -11,6 +15,7 @@
     max-width: 1188px;
     padding: 40px 24px 0 24px;
     margin: 0 auto;
+    width: 100%;
 
     &__title {
       color: var(--dark-smoke, #555);
