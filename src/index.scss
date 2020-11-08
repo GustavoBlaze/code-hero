@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap");
 
 :root {
-  --snow: #F5F5F5;
-  --smoke: #8E8E8E;
-  --dark-snow: #E5E5E5;
+  --snow: #f5f5f5;
+  --smoke: #8e8e8e;
+  --dark-snow: #e5e5e5;
   --dark-smoke: #555555;
-  --dark-blue: #167ABC;
-  --white: #FFFFFF;
+  --dark-blue: #167abc;
+  --white: #ffffff;
 }
 
 * {
@@ -23,9 +23,8 @@ html,
 body,
 #root {
   min-height: 100%;
-  background-color: var(--dark-snow, #E5E5E5);
+  background-color: var(--dark-snow, #e5e5e5);
   overflow-x: hidden;
-  overflow-y: auto;
 }
 
 html {
@@ -33,7 +32,17 @@ html {
 }
 
 body {
-  font-family: 'PT Sans Caption', sans-serif;
+  font-family: "PT Sans Caption", sans-serif;
   font-smooth: antialiased;
   -webkit-font-smoothing: antialiased !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: var(--dark-snow, #555);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--smoke, #555);
 }

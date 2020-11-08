@@ -2,7 +2,7 @@ import React from "react";
 
 import "./styles.scss";
 
-function CharactersTable({ characters }) {
+function CharactersTable({ characters, onClickCallback }) {
   return (
     <table className="characters-table">
       <thead>
@@ -14,7 +14,7 @@ function CharactersTable({ characters }) {
       </thead>
       <tbody>
         {characters.map(({ id, name, thumbnail, series, events }) => (
-          <tr key={String(id)} className="characters-table__row">
+          <tr key={String(id)} className="characters-table__row" onClick={() => onClickCallback(id)}>
             <td className="characters-table__row__character">
               <img
                 src={`${thumbnail.path}.${thumbnail.extension}`}

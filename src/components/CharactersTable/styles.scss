@@ -48,6 +48,10 @@
       box-shadow: 0px 0px 10px #00000073;
     }
 
+    &:active {
+      opacity: 0.7;
+    }
+
     td {
       width: calc(100% / 3);
       padding: 20px 0;

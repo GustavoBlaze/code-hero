@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import SearchForm from "../../components/SearchForm";
 import CharactersTable from "../../components/CharactersTable";
 import FooterWithPagination from "../../components/FooterWithPagination";
+import CharacterModal from "../../components/CharacterModal";
 import md5 from "js-md5";
 
 import "./styles.scss";
@@ -14,6 +15,7 @@ const PUBLIC_KEY = "597b63caf3f947556f47c4f1ad84abce";
 function Home() {
   const [data, setData] = useState({});
   const [lastSearch, setLastSearch] = useState("");
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
 
   const { page, pages, results } = useMemo(
     () => ({
@@ -71,6 +73,26 @@ function Home() {
     [callApi, lastSearch]
   );
 
+  const handleCharacterListClick = useCallback(
+    (characterId) => {
+      const htmlPage = document?.querySelector("html");
+
+      if (htmlPage) htmlPage.style.overflowY = "hidden";
+
+      const character = results.find(({ id }) => id === characterId);
+      setSelectedCharacter(character || null);
+    },
+    [results]
+  );
+
+  const handleModalCloseClick = useCallback(() => {
+    const htmlPage = document?.querySelector("html");
+
+    if (htmlPage) htmlPage.style.overflowY = "auto";
+
+    setSelectedCharacter(null);
+  }, []);
+
   useEffect(() => {
     callApi(null, 0);
   }, [callApi]);
@@ -81,13 +103,22 @@ function Home() {
       <section className="home__content">
         <h1 className="home__content__title">Busca de personagens</h1>
         <SearchForm callApiCallback={callApi} />
-        <CharactersTable characters={results} />
+        <CharactersTable
+          onClickCallback={handleCharacterListClick}
+          characters={results}
+        />
       </section>
       <FooterWithPagination
         page={page || 1}
         pages={pages}
         callback={handlePaginationClick}
       />
+      {selectedCharacter && (
+        <CharacterModal
+          closeCallback={handleModalCloseClick}
+          character={selectedCharacter}
+        />
+      )}
     </div>
   );
 }
