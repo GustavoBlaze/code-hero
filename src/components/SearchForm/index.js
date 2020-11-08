@@ -3,7 +3,7 @@ import React, { useState, useCallback } from "react";
 import searchSVG from "../../assets/icons/search.svg";
 import "./styles.scss";
 
-function SearchForm({ callApiCallback, ...rest }) {
+function SearchForm({ callApiCallback, loading, ...rest }) {
   const [characterName, setCharacterName] = useState("");
 
   const onSubmit = useCallback(
@@ -34,6 +34,7 @@ function SearchForm({ callApiCallback, ...rest }) {
           <img src={searchSVG} alt="ícone de busca"></img>
         </button>
       </div>
+      <span className="search-form__loading" style={{opacity: loading ? 1 : 0}}>Carregando...</span>
     </form>
   );
 }

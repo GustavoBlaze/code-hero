@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 4rem;
+  position: relative;
 
   label {
     color: var(--dark-smoke, #555);
@@ -54,6 +55,14 @@
         height: 1.6rem;
       }
     }
+  }
+
+  &__loading {
+    position: absolute;
+    bottom: -.8rem;
+    transform: translateY(100%);
+    left: 1.6rem;
+    color: var(--dark-smoke)
   }
 
   @media (max-width: 576px) {

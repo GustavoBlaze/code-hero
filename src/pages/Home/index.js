@@ -16,6 +16,7 @@ function Home() {
   const [data, setData] = useState({});
   const [lastSearch, setLastSearch] = useState("");
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const { page, pages, results } = useMemo(
     () => ({
@@ -39,6 +40,8 @@ function Home() {
 
   const callApi = useCallback(
     async (characterName, offset = 0) => {
+      setLoading(true);
+
       const timestamp = Number(new Date());
       const hash = md5.create();
       hash.update(timestamp + PUBLIC_KEY);
@@ -62,6 +65,8 @@ function Home() {
       } catch (err) {
         console.error(err);
       }
+
+      setLoading(false)
     },
     [paseApiData]
   );
@@ -102,7 +107,7 @@ function Home() {
       <Header />
       <section className="home__content">
         <h1 className="home__content__title">Busca de personagens</h1>
-        <SearchForm callApiCallback={callApi} />
+        <SearchForm callApiCallback={callApi} loading={loading}/>
         <CharactersTable
           onClickCallback={handleCharacterListClick}
           characters={results}
