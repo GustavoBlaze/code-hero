@@ -23,7 +23,7 @@ function SearchForm({ callApiCallback, loading, ...rest }) {
         <input
           id="search-name-input"
           type="text"
-          placeholder="Search"
+          placeholder="Pesquisar"
           name="name"
           value={characterName}
           onChange={({ target }) => {
