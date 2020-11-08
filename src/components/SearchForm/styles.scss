@@ -62,7 +62,7 @@
     bottom: -.8rem;
     transform: translateY(100%);
     left: 1.6rem;
-    color: var(--dark-smoke)
+    color: var(--dark-smoke, #555555);
   }
 
   @media (max-width: 576px) {
@@ -76,7 +76,6 @@
 
     &__input-group {
       width: 100%;
-      max-width: 327px;
     }
   }
 }
