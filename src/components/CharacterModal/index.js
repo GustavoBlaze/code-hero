@@ -43,7 +43,7 @@ function CharacterModal({ character, closeCallback, ...rest }) {
     if (id === "character-modal") {
       closeCallback();
     }
-  }, []);
+  }, [closeCallback]);
 
   return (
     <div
