@@ -9,6 +9,7 @@ const PUBLIC_KEY = "597b63caf3f947556f47c4f1ad84abce";
 
 function CharacterModal({ character, closeCallback, ...rest }) {
   const [comics, setComics] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const { id, thumbnail, name, description } = useMemo(
     () => ({
@@ -22,6 +23,7 @@ function CharacterModal({ character, closeCallback, ...rest }) {
 
   useEffect(() => {
     async function loadComics() {
+      setLoading(true);
       const timestamp = Number(new Date());
       const hash = md5.create();
       hash.update(timestamp + PUBLIC_KEY);
@@ -33,17 +35,21 @@ function CharacterModal({ character, closeCallback, ...rest }) {
       ).then((r) => r.json());
 
       setComics(results);
+      setLoading(false);
     }
 
     loadComics();
   }, [id]);
 
-  const handleModalClick = useCallback(({ target }) => {
-    const { id } = target;
-    if (id === "character-modal") {
-      closeCallback();
-    }
-  }, [closeCallback]);
+  const handleModalClick = useCallback(
+    ({ target }) => {
+      const { id } = target;
+      if (id === "character-modal") {
+        closeCallback();
+      }
+    },
+    [closeCallback]
+  );
 
   return (
     <div
@@ -64,13 +70,22 @@ function CharacterModal({ character, closeCallback, ...rest }) {
         <div className="character-modal__content">
           <h2>Descrição</h2>
           <p>{`${description || "..."}`}</p>
-          <h2 style={{ display: "flex", alignItems: "center" }}>
+          <h2
+            className="character-modal__content__comic-section-title"
+            style={{ display: "flex", alignItems: "center" }}
+          >
             Comics{" "}
             {comics.length > 0 && (
-              <img className="arrow-right" alt="arrow-right-icon" src={arrowRightSVG} />
+              <img
+                className="arrow-right"
+                alt="arrow-right-icon"
+                src={arrowRightSVG}
+              />
             )}
+            <span style={{ opacity: loading ? 1 : 0 }}>Carregando...</span>
           </h2>
-          {comics.length === 0 ? (
+
+          {!loading && comics.length === 0 ? (
             <p>...</p>
           ) : (
             <ul>

@@ -111,6 +111,21 @@
       margin-bottom: 1.6rem;
     }
 
+    &__comic-section-title {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      > span {
+        font-size: 1.2rem;
+        font-weight: 400;
+        position: absolute;
+        bottom: -.8rem;
+        transform: translateY(100%);
+        color: var(--dark-smoke, #555555);
+      }
+    }
+
     > ul {
       display: flex;
       flex-direction: row;
