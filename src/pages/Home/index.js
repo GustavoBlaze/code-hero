@@ -30,8 +30,6 @@ function Home() {
     setData(data);
   }, []);
 
-  console.log({ limit, total, offset, results });
-
   return (
     <div className="page">
       <Header />
