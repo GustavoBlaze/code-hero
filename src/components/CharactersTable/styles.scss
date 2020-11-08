@@ -1,0 +1,168 @@
+@keyframes appearFromBottom {
+  0% {
+    opacity: 0.5;
+    transform: translateY(100%);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-5%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.characters-table {
+  border-collapse: separate;
+  border-color: transparent;
+  border-spacing: 0 0.8rem;
+  padding-bottom: 1.8rem;
+  max-width: 100%;
+
+  font-family: "PT Sans", sans-serif;
+  color: var(--dark-smoke, #555);
+
+  &__head {
+    text-align: left;
+
+    th {
+      font-size: 1.2rem;
+      line-height: 1.4rem;
+      font-weight: 400;
+      color: var(--smoke, #8e8e8e);
+
+      &:first-child {
+        padding-left: 2.4rem;
+      }
+    }
+  }
+
+  &__row {
+    background: var(--white, #fff);
+    box-shadow: 0px 0px 5px #00000033;
+    border-radius: 0.4rem;
+    animation: appearFromBottom 0.35s ease-out both;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0px 0px 10px #00000073;
+    }
+
+    td {
+      width: calc(100% / 3);
+      padding: 20px 0;
+      vertical-align: middle;
+      border: 0;
+    }
+
+    td:first-child {
+      border-top-left-radius: 0.4rem;
+      border-bottom-left-radius: 0.4rem;
+      padding-left: 24px;
+    }
+
+    td:last-child {
+      border-top-right-radius: 0.4rem;
+      border-bottom-right-radius: 0.4rem;
+    }
+
+    &__character {
+      img {
+        height: 4.8rem;
+        width: 4.8rem;
+        object-fit: cover;
+        border-radius: 0.4rem;
+        vertical-align: middle;
+      }
+
+      strong {
+        margin-left: 2.4rem;
+        font-size: 1.6rem;
+        line-height: 1.8rem;
+        font-weight: bold;
+      }
+    }
+
+    &__series,
+    &__events {
+      font-size: 1.4rem;
+      line-height: 1.63rem;
+
+      p {
+        width: 90%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+      }
+    }
+
+    &__series p {
+      padding-left: 0.8rem;
+    }
+  }
+
+  @for $i from 1 through 10 {
+    &__row:nth-child(#{$i}) {
+      animation-delay: #{($i - 1) * 100}ms;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    &__head {
+      &__events {
+        max-width: 0;
+        visibility: hidden;
+      }
+    }
+
+    &__row {
+      td {
+        width: 50%;
+      }
+
+      &__events {
+        max-width: 0;
+      }
+
+      &__series {
+        border-top-right-radius: 0.4rem;
+        border-bottom-right-radius: 0.4rem;
+      }
+    }
+  }
+
+  @media (max-width: 700px) {
+    &__head {
+      th:first-child {
+        padding-left: 9.6rem;
+      }
+
+      &__series {
+        max-width: 0;
+        visibility: hidden;
+      }
+    }
+
+    &__row {
+      td {
+        width: 100%;
+      }
+
+      &__series {
+        max-width: 0;
+      }
+
+      &__character {
+        border-top-right-radius: 0.4rem;
+        border-bottom-right-radius: 0.4rem;
+
+        strong {
+          font-size: 1.4rem;
+          line-height: 1.7rem;
+        }
+      }
+    }
+  }
+}

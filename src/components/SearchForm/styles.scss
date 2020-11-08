@@ -1,6 +1,7 @@
 .search-form {
   display: flex;
   flex-direction: column;
+  margin-bottom: 4rem;
 
   label {
     color: var(--dark-smoke, #555);
@@ -57,6 +58,7 @@
 
   @media (max-width: 576px) {
     align-items: center;
+    margin-bottom: 3.2rem;
 
     label {
       font-size: 1.4rem;
