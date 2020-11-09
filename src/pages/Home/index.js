@@ -21,7 +21,7 @@ function Home() {
   const { page, pages, results } = useMemo(
     () => ({
       page: data.offset / 10,
-      pages: Math.floor(data.total / data.limit) || 1,
+      pages: Math.ceil(data.total / data.limit) || 1,
       results: Array.isArray(data.results) ? data.results : [],
     }),
     [data]
@@ -73,7 +73,7 @@ function Home() {
 
   const handlePaginationClick = useCallback(
     (page) => {
-      callApi(lastSearch, page);
+      callApi(lastSearch, page - 1);
     },
     [callApi, lastSearch]
   );
@@ -114,7 +114,7 @@ function Home() {
         />
       </section>
       <FooterWithPagination
-        page={page || 1}
+        page={page + 1}
         pages={pages}
         callback={handlePaginationClick}
       />
