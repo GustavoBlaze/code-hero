@@ -78,6 +78,11 @@
     &:not(:first-child) {
       margin-left: 1.6rem;
     }
+
+    &:disabled {
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 
   @media (max-width: 576px) {
