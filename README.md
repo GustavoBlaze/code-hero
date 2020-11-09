@@ -33,6 +33,7 @@ _Abra um terminal e digite:_
 yarn
 yarn start
 ```
+Ou, abra o link com a demo: https://fervent-wiles-fcd269.netlify.app/
 
 Pronto! Após estes passos, a aplicação estará rodando! Happy coding.
 
